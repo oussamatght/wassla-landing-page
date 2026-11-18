@@ -1,0 +1,46 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+/build
+
+# testing
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# local screenshots produced by scripts/*.mjs
+/docs/screenshots/
+
+# env: only .env.example is committed
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# misc
+*.pem
+*.tsbuildinfo
+next-env.d.ts
