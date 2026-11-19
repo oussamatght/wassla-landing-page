@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Tailwind theme bound to the semantic tokens (src/styles/tokens.css). */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-on-accent: var(--on-accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-sponsored: var(--sponsored);
+  --color-focus: var(--focus);
+
+  --color-navy-950: var(--brand-navy-950);
+  --color-navy-900: var(--brand-navy-900);
+  --color-cyan-400: var(--brand-cyan-400);
+  --color-blue-500: var(--brand-blue-500);
+  --color-violet-500: var(--brand-violet-500);
+  --color-lavender-300: var(--brand-lavender-300);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --ease-ui: cubic-bezier(0.215, 0.61, 0.355, 1); /* ≈ power3.out */
+  --ease-camera: cubic-bezier(0.455, 0.03, 0.515, 0.955); /* ≈ power2.inOut */
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body), system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), var(--font-body), sans-serif;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--brand-cyan-400) 35%, transparent);
+    color: var(--text-primary);
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Signature gradient: decorative only (lines, active states, rims). */
+  .bg-signature {
+    background-image: var(--signature-gradient);
+  }
+
+  /* Primary CTA fill: deepened signature, white labels pass AA. */
+  .bg-cta {
+    background-image: var(--cta-gradient);
+    box-shadow: var(--cta-highlight);
+  }
+
+  .text-signature {
+    background-image: var(--signature-gradient);
+    background-clip: text;
+    color: transparent;
+  }
+
+  .border-signature {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--surface-1), var(--surface-1)) padding-box,
+      var(--signature-gradient) border-box;
+  }
+
+  .blueprint-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

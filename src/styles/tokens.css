@@ -1,0 +1,70 @@
+/*
+ * WASSLA design tokens.
+ * Brand values are sampled from the official logo (public/brand/wassla-logo.png) with
+ * scripts/sample-logo-colors.mjs. Every text/background pair is verified by
+ * scripts/contrast-report.mjs (results in docs/DESIGN_SYSTEM.md).
+ * The site is dark-only by design ("night garage"); there is no light theme.
+ */
+:root {
+  /* Brand palette (sampled) */
+  --brand-navy-950: #020523; /* logo corner #010322, lifted to avoid banding */
+  --brand-navy-900: #04104c; /* logo field #02125b */
+  --brand-cyan-400: #30eefd; /* W left stroke */
+  --brand-blue-500: #145dff; /* between W strokes #0741ef … #1895fd */
+  --brand-violet-500: #5b2cfd; /* W right loop #5023fd */
+  --brand-lavender-300: #d97ffe; /* W right tip #d57efd / #de81ff */
+  --brand-white: #f7f8ff;
+
+  /* Signature gradient — decorative only: 1px borders, active states, rims.
+     White text on its cyan end is 1.42:1, so it never carries text. */
+  --signature-gradient: linear-gradient(
+    100deg,
+    var(--brand-cyan-400) 0%,
+    var(--brand-blue-500) 52%,
+    var(--brand-violet-500) 100%
+  );
+
+  /* CTA fill — the signature direction, deepened so white labels pass AA on
+     every stop (5.14 / 5.20 / 6.51 : 1). A cyan inner highlight keeps the rim. */
+  --cta-gradient: linear-gradient(100deg, #0b6bd6 0%, var(--brand-blue-500) 45%, var(--brand-violet-500) 100%);
+  --cta-highlight: inset 0 1px 0 rgb(48 238 253 / 0.55), inset 0 0 0 1px rgb(255 255 255 / 0.08);
+
+  /* Semantic */
+  --bg: var(--brand-navy-950);
+  --surface-1: #071034;
+  --surface-2: #0b1643;
+  --surface-3: #111f57;
+  --border: rgb(247 248 255 / 0.1);
+  --border-strong: rgb(247 248 255 / 0.22);
+  --grid-line: rgb(48 238 253 / 0.045);
+  --scrim: rgb(2 5 35 / 0.72);
+
+  --text-primary: var(--brand-white);
+  --text-secondary: #b9c0e3;
+  --text-muted: #939cc8;
+
+  --accent: var(--brand-cyan-400);
+  --accent-strong: #7df4fe;
+  --on-accent: var(--brand-navy-950);
+
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #fb7185;
+  --sponsored: var(--brand-lavender-300);
+  --focus: var(--brand-cyan-400);
+
+  --shadow-card: 0 1px 0 rgb(247 248 255 / 0.04) inset, 0 12px 32px -16px rgb(0 0 0 / 0.6);
+
+  /* Motion tokens (GSAP equivalents: power3.out for UI, power2.inOut for camera) */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-scene: 800ms;
+  --hover-lift: -4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --hover-lift: 0px;
+  }
+}
