@@ -1,6 +1,6 @@
 # dependencies
 /node_modules
-
+/node_module
 # next.js
 /.next/
 /out/
